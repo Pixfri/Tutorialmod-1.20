@@ -1,0 +1,40 @@
+{
+	"schemaVersion": 1,
+	"id": "templatemod",
+	"version": "${version}",
+	"name": "Template Mod",
+	"description": "This is an example description! Tell everyone what your mod is about!",
+	"authors": [
+		"Pixfri"
+	],
+	"contact": {
+		"homepage": "https://github.com/Pixfri",
+		"sources": "https://github.com/Pixfri/TemplateMod-Fabric-1.20"
+	},
+	"license": "CC0-1.0",
+	"icon": "assets/templatemod/icon.png",
+	"environment": "*",
+	"entrypoints": {
+		"main": [
+          "fr.pixfri.templatemod.TemplateMod"
+		],
+		"client": [
+			"fr.pixfri.templatemod.TemplateModClient"
+		],
+		"fabric-datagen": [
+			"fr.pixfri.templatemod.TemplateModDataGenerator"
+		]
+	},
+	"mixins": [
+		"templatemod.mixins.json"
+	],
+	"depends": {
+		"fabricloader": ">=0.14.22",
+		"minecraft": "~1.20.1",
+		"java": ">=17",
+		"fabric-api": "*"
+	},
+	"suggests": {
+		"another-mod": "*"
+	}
+}
