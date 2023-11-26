@@ -12,7 +12,7 @@
 		"sources": "https://github.com/Pixfri/Tutorialmod-1.20"
 	},
 	"license": "CC0-1.0",
-	"icon": "assets/templatemod/icon.png",
+	"icon": "assets/tutorialmod/icon.png",
 	"environment": "*",
 	"entrypoints": {
 		"main": [
