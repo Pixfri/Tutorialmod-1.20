@@ -1,32 +1,32 @@
 {
 	"schemaVersion": 1,
-	"id": "templatemod",
+	"id": "tutorialmod",
 	"version": "${version}",
-	"name": "Template Mod",
+	"name": "Tutorial Mod",
 	"description": "This is an example description! Tell everyone what your mod is about!",
 	"authors": [
 		"Pixfri"
 	],
 	"contact": {
 		"homepage": "https://github.com/Pixfri",
-		"sources": "https://github.com/Pixfri/TemplateMod-Fabric-1.20"
+		"sources": "https://github.com/Pixfri/Tutorialmod-1.20"
 	},
 	"license": "CC0-1.0",
 	"icon": "assets/templatemod/icon.png",
 	"environment": "*",
 	"entrypoints": {
 		"main": [
-          "fr.pixfri.templatemod.TemplateMod"
+          "fr.pixfri.tutorialmod.TutorialMod"
 		],
 		"client": [
-			"fr.pixfri.templatemod.TemplateModClient"
+			"fr.pixfri.tutorialmod.TutorialModClient"
 		],
 		"fabric-datagen": [
-			"fr.pixfri.templatemod.TemplateModDataGenerator"
+			"fr.pixfri.tutorialmod.TutorialModDataGenerator"
 		]
 	},
 	"mixins": [
-		"templatemod.mixins.json"
+      "tutorialmod.mixins.json"
 	],
 	"depends": {
 		"fabricloader": ">=0.14.22",
