@@ -1,5 +1,6 @@
 package fr.pixfri.tutorialmod;
 
+import fr.pixfri.tutorialmod.block.ModBlocks;
 import fr.pixfri.tutorialmod.item.ModItemGroups;
 import fr.pixfri.tutorialmod.item.ModItems;
 import net.fabricmc.api.ModInitializer;
@@ -14,6 +15,8 @@ public class TutorialMod implements ModInitializer {
 	@Override
 	public void onInitialize() {
 		ModItemGroups.registerItemGroups();
+
 		ModItems.registerModItems();
+		ModBlocks.registerModBlocks();
 	}
 }
