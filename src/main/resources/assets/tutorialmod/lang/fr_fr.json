@@ -4,6 +4,10 @@
 
   "block.tutorialmod.ruby_block": "Bloc de Rubis",
   "block.tutorialmod.raw_ruby_block": "Bloc de Rubis Brut",
+  "block.tutorialmod.ruby_ore": "Minerai de Rubis",
+  "block.tutorialmod.deepslate_ruby_ore": "Minerai de Rubis des Abîmes",
+  "block.tutorialmod.nether_ruby_ore": "Minerai de Rubis du Nether",
+  "block.tutorialmod.end_stone_ruby_ore": "Minerai de Rubis de l'End",
 
   "itemGroup.ruby": "Rubis"
 }
