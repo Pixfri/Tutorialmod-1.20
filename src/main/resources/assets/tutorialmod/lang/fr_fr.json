@@ -2,6 +2,10 @@
   "item.tutorialmod.ruby": "Rubis",
   "item.tutorialmod.raw_ruby": "Rubis Brut",
 
+  "item.tutorialmod.metal_detector": "Détecteur de Métaux",
+  "item.tutorialmod.metal_detector.found_block": "%s trouvé aux coordonnées [%s, %s, %s].",
+  "item.tutorialmod.metal_detector.found_nothing": "Aucun minerai trouvé!",
+
   "block.tutorialmod.ruby_block": "Bloc de Rubis",
   "block.tutorialmod.raw_ruby_block": "Bloc de Rubis Brut",
   "block.tutorialmod.ruby_ore": "Minerai de Rubis",
