@@ -16,6 +16,9 @@ public class ModItems {
     public static final Item METAL_DETECTOR = registerItem("metal_detector", new MetalDetectorItem(
             new FabricItemSettings().maxDamage(64)));
 
+    public static final Item TOMATO = registerItem("tomato", new Item(
+            new FabricItemSettings().food(ModFoodComponents.TOMATO)));
+
     private static Item registerItem(String name, Item item) {
         return Registry.register(Registries.ITEM, new Identifier(TutorialMod.MOD_ID, name), item);
     }

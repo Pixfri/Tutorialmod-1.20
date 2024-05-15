@@ -6,6 +6,8 @@
   "item.tutorialmod.metal_detector.found_block": "Found %s at [%s, %s, %s]",
   "item.tutorialmod.metal_detector.found_nothing": "No ore found!",
 
+  "item.tutorialmod.tomato": "Tomato",
+
   "block.tutorialmod.ruby_block": "Block of Ruby",
   "block.tutorialmod.raw_ruby_block": "Block of Raw Ruby",
   "block.tutorialmod.ruby_ore": "Ruby Ore",
