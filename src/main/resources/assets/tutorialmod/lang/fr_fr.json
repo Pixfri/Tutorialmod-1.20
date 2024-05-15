@@ -3,6 +3,7 @@
   "item.tutorialmod.raw_ruby": "Rubis Brut",
 
   "item.tutorialmod.metal_detector": "Détecteur de Métaux",
+  "item.tutorialmod.metal_detector.tooltip": "Permet de trouver des minerais",
   "item.tutorialmod.metal_detector.found_block": "%s trouvé aux coordonnées [%s, %s, %s].",
   "item.tutorialmod.metal_detector.found_nothing": "Aucun minerai trouvé!",
 
@@ -18,6 +19,7 @@
   "block.tutorialmod.end_stone_ruby_ore": "Minerai de Rubis de l'End",
 
   "block.tutorialmod.sound_block": "Bloc Sonore",
+  "block.tutorialmod.sound_block.tooltip": "Fait un joli son quand il reçoit un clique droit",
 
   "itemGroup.ruby": "Rubis"
 }

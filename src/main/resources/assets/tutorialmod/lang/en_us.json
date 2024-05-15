@@ -3,6 +3,7 @@
   "item.tutorialmod.raw_ruby": "Raw Ruby",
 
   "item.tutorialmod.metal_detector": "Metal Detector",
+  "item.tutorialmod.metal_detector.tooltip": "Finds valuables underground",
   "item.tutorialmod.metal_detector.found_block": "Found %s at [%s, %s, %s]",
   "item.tutorialmod.metal_detector.found_nothing": "No ore found!",
 
@@ -18,6 +19,7 @@
   "block.tutorialmod.end_stone_ruby_ore": "End Stone Ruby Ore",
 
   "block.tutorialmod.sound_block": "Sound Block",
+  "block.tutorialmod.sound_block.tooltip": "Makes a sweet sound when right-clicked",
 
   "itemGroup.ruby": "Ruby"
 }
