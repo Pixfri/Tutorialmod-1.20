@@ -3,6 +3,7 @@ package fr.pixfri.tutorialmod.item;
 import fr.pixfri.tutorialmod.TutorialMod;
 import fr.pixfri.tutorialmod.item.custom.MetalDetectorItem;
 import net.fabricmc.fabric.api.item.v1.FabricItemSettings;
+import net.fabricmc.fabric.api.registry.FuelRegistry;
 import net.minecraft.item.Item;
 import net.minecraft.registry.Registries;
 import net.minecraft.registry.Registry;
@@ -19,8 +20,17 @@ public class ModItems {
     public static final Item TOMATO = registerItem("tomato", new Item(
             new FabricItemSettings().food(ModFoodComponents.TOMATO)));
 
+    public static final Item COAL_BRIQUETTE = registerFuelItem("coal_briquette", new Item(new FabricItemSettings()),
+            200);
+
     private static Item registerItem(String name, Item item) {
         return Registry.register(Registries.ITEM, new Identifier(TutorialMod.MOD_ID, name), item);
+    }
+
+    private static <V> Item registerFuelItem(String name, Item item, int value) {
+        Item fuelItem = registerItem(name, item);
+        FuelRegistry.INSTANCE.add(fuelItem, value);
+        return fuelItem;
     }
 
     public static void registerItems() {

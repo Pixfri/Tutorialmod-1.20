@@ -1,0 +1,9 @@
+{
+  "type": "minecraft:smelting",
+  "category": "misc",
+  "cookingtime": 100,
+  "ingredient": {
+    "tag": "minecraft:planks"
+  },
+  "result": "tutorialmod:coal_briquette"
+}
