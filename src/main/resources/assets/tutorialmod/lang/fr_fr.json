@@ -13,5 +13,7 @@
   "block.tutorialmod.nether_ruby_ore": "Minerai de Rubis du Nether",
   "block.tutorialmod.end_stone_ruby_ore": "Minerai de Rubis de l'End",
 
+  "block.tutorialmod.sound_block": "Bloc Sonore",
+
   "itemGroup.ruby": "Rubis"
 }
