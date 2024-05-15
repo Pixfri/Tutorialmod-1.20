@@ -33,8 +33,8 @@
                   "add": false,
                   "count": {
                     "type": "minecraft:uniform",
-                    "max": 9.0,
-                    "min": 4.0
+                    "max": 5.0,
+                    "min": 2.0
                   },
                   "function": "minecraft:set_count"
                 },
@@ -54,6 +54,5 @@
       ],
       "rolls": 1.0
     }
-  ],
-  "random_sequence": "tutorialmod:blocks/end_stone_ruby_ore"
+  ]
 }
