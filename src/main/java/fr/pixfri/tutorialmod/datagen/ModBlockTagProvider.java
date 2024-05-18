@@ -55,8 +55,7 @@ public class ModBlockTagProvider extends FabricTagProvider.BlockTagProvider {
                 .add(ModBlocks.SOUND_BLOCK);
 
         getOrCreateTagBuilder(BlockTags.NEEDS_STONE_TOOL)
-                .add(ModBlocks.NETHER_RUBY_ORE)
-                .add(ModBlocks.SOUND_BLOCK);
+                .add(ModBlocks.NETHER_RUBY_ORE);
 
         getOrCreateTagBuilder(BlockTags.NEEDS_IRON_TOOL)
                 .add(ModBlocks.RUBY_BLOCK)
@@ -85,7 +84,11 @@ public class ModBlockTagProvider extends FabricTagProvider.BlockTagProvider {
         getOrCreateTagBuilder(BlockTags.WALLS)
                 .add(ModBlocks.RUBY_WALL);
 
+        // Needs Netherite tool.
         getOrCreateTagBuilder(TagKey.of(RegistryKeys.BLOCK, new Identifier("fabric", "needs_tool_level_4")))
             ; // Nothing in this tag for now.
+
+        getOrCreateTagBuilder(TagKey.of(RegistryKeys.BLOCK, new Identifier("fabric", "needs_tool_level_5")))
+                .add(ModBlocks.SOUND_BLOCK);
     }
 }

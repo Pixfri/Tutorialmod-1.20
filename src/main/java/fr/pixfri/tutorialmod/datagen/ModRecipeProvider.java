@@ -1,5 +1,6 @@
 package fr.pixfri.tutorialmod.datagen;
 
+import fr.pixfri.tutorialmod.TutorialMod;
 import fr.pixfri.tutorialmod.block.ModBlocks;
 import fr.pixfri.tutorialmod.item.ModItems;
 import net.fabricmc.fabric.api.datagen.v1.FabricDataOutput;
@@ -9,8 +10,7 @@ import net.minecraft.data.server.recipe.CraftingRecipeJsonBuilder;
 import net.minecraft.data.server.recipe.RecipeJsonProvider;
 import net.minecraft.data.server.recipe.ShapedRecipeJsonBuilder;
 import net.minecraft.data.server.recipe.ShapelessRecipeJsonBuilder;
-import net.minecraft.item.ItemConvertible;
-import net.minecraft.item.Items;
+import net.minecraft.item.*;
 import net.minecraft.recipe.Ingredient;
 import net.minecraft.recipe.book.RecipeCategory;
 import net.minecraft.registry.tag.ItemTags;
@@ -22,9 +22,13 @@ import java.util.function.Consumer;
 public class ModRecipeProvider extends FabricRecipeProvider {
     private static final List<ItemConvertible> RUBY_SMELTABLES = List.of(ModItems.RAW_RUBY,
             ModBlocks.RUBY_ORE, ModBlocks.DEEPSLATE_RUBY_ORE, ModBlocks.NETHER_RUBY_ORE, ModBlocks.END_STONE_RUBY_ORE);
+
     private static final List<ItemConvertible> PLANKS = List.of(Blocks.ACACIA_PLANKS, Blocks.BAMBOO_PLANKS,
             Blocks.BIRCH_PLANKS, Blocks.CHERRY_PLANKS, Blocks.CRIMSON_PLANKS, Blocks.DARK_OAK_PLANKS, Blocks.JUNGLE_PLANKS,
             Blocks.OAK_PLANKS, Blocks.SPRUCE_PLANKS, Blocks.WARPED_PLANKS);
+
+    private static final List<ItemConvertible> RUBY_TOOLS = List.of(ModItems.RUBY_PICKAXE, ModItems.RUBY_AXE,
+            ModItems.RUBY_SWORD, ModItems.RUBY_SHOVEL, ModItems.RUBY_HOE);
 
     public ModRecipeProvider(FabricDataOutput output) {
         super(output);
@@ -85,10 +89,57 @@ public class ModRecipeProvider extends FabricRecipeProvider {
         offerWallRecipe(exporter, RecipeCategory.BUILDING_BLOCKS, ModBlocks.RUBY_WALL, ModItems.RUBY);
         offerDoorRecipe(exporter, ModBlocks.RUBY_DOOR, ModItems.RUBY);
         offerTrapdoorRecipe(exporter, ModBlocks.RUBY_TRAPDOOR, ModItems.RUBY);
+
+        offerMaterialToolRecipes(exporter, RUBY_TOOLS, ModItems.RUBY);
     }
 
     private CraftingRecipeJsonBuilder createButtonRecipe(ItemConvertible output, Ingredient input) {
         return ShapelessRecipeJsonBuilder.create(RecipeCategory.REDSTONE, output, 4).input(input);
+    }
+
+    private CraftingRecipeJsonBuilder createPickaxeRecipe(ItemConvertible output, Ingredient input) {
+        return ShapedRecipeJsonBuilder.create(RecipeCategory.MISC, output, 1)
+                .input('M', input)
+                .input('S', Items.STICK)
+                .pattern("MMM")
+                .pattern(" S ")
+                .pattern(" S ");
+    }
+
+    private CraftingRecipeJsonBuilder createAxeRecipe(ItemConvertible output, Ingredient input) {
+        return ShapedRecipeJsonBuilder.create(RecipeCategory.COMBAT, output, 1)
+                .input('M', input)
+                .input('S', Items.STICK)
+                .pattern("MM")
+                .pattern("SM")
+                .pattern("S ");
+    }
+
+    private CraftingRecipeJsonBuilder createSwordRecipe(ItemConvertible output, Ingredient input) {
+        return ShapedRecipeJsonBuilder.create(RecipeCategory.COMBAT, output, 1)
+                .input('M', input)
+                .input('S', Items.STICK)
+                .pattern("M")
+                .pattern("M")
+                .pattern("S");
+    }
+
+    private CraftingRecipeJsonBuilder createShovelRecipe(ItemConvertible output, Ingredient input) {
+        return ShapedRecipeJsonBuilder.create(RecipeCategory.MISC, output, 1)
+                .input('M', input)
+                .input('S', Items.STICK)
+                .pattern("M")
+                .pattern("S")
+                .pattern("S");
+    }
+
+    private CraftingRecipeJsonBuilder createHoeRecipe(ItemConvertible output, Ingredient input) {
+        return ShapedRecipeJsonBuilder.create(RecipeCategory.MISC, output, 1)
+                .input('M', input)
+                .input('S', Items.STICK)
+                .pattern("MM")
+                .pattern("S ")
+                .pattern("S ");
     }
 
     private void offerStairsRecipe(Consumer<RecipeJsonProvider> exporter, ItemConvertible output, ItemConvertible input) {
@@ -119,5 +170,35 @@ public class ModRecipeProvider extends FabricRecipeProvider {
     private void offerTrapdoorRecipe(Consumer<RecipeJsonProvider> exporter, ItemConvertible output, ItemConvertible input) {
         createTrapdoorRecipe(output, Ingredient.ofItems(input)).criterion(hasItem(input), conditionsFromItem(input))
                 .offerTo(exporter);
+    }
+
+    private void offerMaterialToolRecipes(Consumer<RecipeJsonProvider> exporter, List<ItemConvertible> outputs,
+                                          ItemConvertible input) {
+        for (ItemConvertible tool : outputs) {
+
+            switch (tool) {
+                case PickaxeItem pickaxe -> createPickaxeRecipe(pickaxe, Ingredient.ofItems(input))
+                        .criterion(hasItem(input), conditionsFromItem(input))
+                        .offerTo(exporter);
+
+                case AxeItem axe -> createAxeRecipe(axe, Ingredient.ofItems(input))
+                        .criterion(hasItem(input), conditionsFromItem(input))
+                        .offerTo(exporter);
+
+                case SwordItem sword -> createSwordRecipe(sword, Ingredient.ofItems(input))
+                        .criterion(hasItem(input), conditionsFromItem(input))
+                        .offerTo(exporter);
+
+                case ShovelItem shovel -> createShovelRecipe(shovel, Ingredient.ofItems(input))
+                        .criterion(hasItem(input), conditionsFromItem(input))
+                        .offerTo(exporter);
+
+                case HoeItem hoe -> createHoeRecipe(hoe, Ingredient.ofItems(input))
+                        .criterion(hasItem(input), conditionsFromItem(input))
+                        .offerTo(exporter);
+
+                default -> TutorialMod.LOGGER.error("Item {} isn't a tool.", tool);
+            }
+        }
     }
 }
