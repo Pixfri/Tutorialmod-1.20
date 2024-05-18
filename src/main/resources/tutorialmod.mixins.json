@@ -2,8 +2,10 @@
 	"required": true,
 	"package": "fr.pixfri.tutorialmod.mixin",
 	"compatibilityLevel": "JAVA_17",
-	"mixins": [
-		"ExampleMixin"
+	"client": [
+		"ModelLoaderMixin",
+		"ItemRendererMixin",
+		"ItemRendererAccessor"
 	],
 	"injectors": {
 		"defaultRequire": 1

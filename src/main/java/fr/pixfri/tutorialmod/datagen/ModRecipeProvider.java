@@ -66,6 +66,16 @@ public class ModRecipeProvider extends FabricRecipeProvider {
                 .criterion(hasItem(ModItems.RUBY), conditionsFromItem(ModItems.RUBY))
                 .offerTo(exporter, new Identifier(getRecipeName(ModBlocks.SOUND_BLOCK)));
 
+        ShapedRecipeJsonBuilder.create(RecipeCategory.MISC, ModItems.RUBY_STAFF, 1)
+                .pattern("  R")
+                .pattern(" S ")
+                .pattern("S  ")
+                .input('R', ModItems.RUBY)
+                .input('S', Items.STICK)
+                .criterion(hasItem(ModItems.RUBY), conditionsFromItem(ModItems.RUBY))
+                .criterion(hasItem(Items.STICK), conditionsFromItem(Items.STICK))
+                .offerTo(exporter, new Identifier(getRecipeName(ModItems.RUBY_STAFF)));
+
         offerStairsRecipe(exporter, ModBlocks.RUBY_STAIRS, ModItems.RUBY);
         offerSlabRecipe(exporter, RecipeCategory.BUILDING_BLOCKS, ModBlocks.RUBY_SLAB, ModItems.RUBY);
         offerButtonRecipe(exporter, ModBlocks.RUBY_BUTTON, ModItems.RUBY);
