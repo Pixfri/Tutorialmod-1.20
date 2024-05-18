@@ -1,10 +1,8 @@
 package fr.pixfri.tutorialmod.item.custom;
 
-import fr.pixfri.tutorialmod.block.ModBlocks;
 import fr.pixfri.tutorialmod.tag.ModTags;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
-import net.minecraft.block.Blocks;
 import net.minecraft.client.item.TooltipContext;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.Item;
