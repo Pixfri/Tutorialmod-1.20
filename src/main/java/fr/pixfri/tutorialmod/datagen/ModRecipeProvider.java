@@ -30,6 +30,9 @@ public class ModRecipeProvider extends FabricRecipeProvider {
     private static final List<ItemConvertible> RUBY_TOOLS = List.of(ModItems.RUBY_PICKAXE, ModItems.RUBY_AXE,
             ModItems.RUBY_SWORD, ModItems.RUBY_SHOVEL, ModItems.RUBY_HOE);
 
+    public static final List<ItemConvertible> RUBY_ARMORS = List.of(ModItems.RUBY_HELMET, ModItems.RUBY_CHESTPLATE,
+            ModItems.RUBY_LEGGINGS, ModItems.RUBY_BOOTS);
+
     public ModRecipeProvider(FabricDataOutput output) {
         super(output);
     }
@@ -90,7 +93,9 @@ public class ModRecipeProvider extends FabricRecipeProvider {
         offerDoorRecipe(exporter, ModBlocks.RUBY_DOOR, ModItems.RUBY);
         offerTrapdoorRecipe(exporter, ModBlocks.RUBY_TRAPDOOR, ModItems.RUBY);
 
-        offerMaterialToolRecipes(exporter, RUBY_TOOLS, ModItems.RUBY);
+        offerToolsRecipes(exporter, RUBY_TOOLS, ModItems.RUBY);
+
+        offerArmorRecipes(exporter, RUBY_ARMORS, ModItems.RUBY);
     }
 
     private CraftingRecipeJsonBuilder createButtonRecipe(ItemConvertible output, Ingredient input) {
@@ -142,6 +147,36 @@ public class ModRecipeProvider extends FabricRecipeProvider {
                 .pattern("S ");
     }
 
+    private CraftingRecipeJsonBuilder createHelmetRecipe(ItemConvertible output, Ingredient input) {
+        return ShapedRecipeJsonBuilder.create(RecipeCategory.COMBAT, output, 1)
+                .input('M', input)
+                .pattern("MMM")
+                .pattern("M M");
+    }
+
+    private CraftingRecipeJsonBuilder createChestplateRecipe(ItemConvertible output, Ingredient input) {
+        return ShapedRecipeJsonBuilder.create(RecipeCategory.COMBAT, output, 1)
+                .input('M', input)
+                .pattern("M M")
+                .pattern("MMM")
+                .pattern("MMM");
+    }
+
+    private CraftingRecipeJsonBuilder createLeggingsRecipe(ItemConvertible output, Ingredient input) {
+        return ShapedRecipeJsonBuilder.create(RecipeCategory.COMBAT, output, 1)
+                .input('M', input)
+                .pattern("MMM")
+                .pattern("M M")
+                .pattern("M M");
+    }
+
+    private CraftingRecipeJsonBuilder createBootsRecipe(ItemConvertible output, Ingredient input) {
+        return ShapedRecipeJsonBuilder.create(RecipeCategory.COMBAT, output, 1)
+                .input('M', input)
+                .pattern("M M")
+                .pattern("M M");
+    }
+
     private void offerStairsRecipe(Consumer<RecipeJsonProvider> exporter, ItemConvertible output, ItemConvertible input) {
         createStairsRecipe(output, Ingredient.ofItems(input)).criterion(hasItem(input), conditionsFromItem(input))
                 .offerTo(exporter);
@@ -172,32 +207,59 @@ public class ModRecipeProvider extends FabricRecipeProvider {
                 .offerTo(exporter);
     }
 
-    private void offerMaterialToolRecipes(Consumer<RecipeJsonProvider> exporter, List<ItemConvertible> outputs,
-                                          ItemConvertible input) {
-        for (ItemConvertible tool : outputs) {
+    private void offerToolsRecipes(Consumer<RecipeJsonProvider> exporter, List<ItemConvertible> tools,
+                                   ItemConvertible material) {
+        for (ItemConvertible tool : tools) {
 
             switch (tool) {
-                case PickaxeItem pickaxe -> createPickaxeRecipe(pickaxe, Ingredient.ofItems(input))
-                        .criterion(hasItem(input), conditionsFromItem(input))
+                case PickaxeItem pickaxe -> createPickaxeRecipe(pickaxe, Ingredient.ofItems(material))
+                        .criterion(hasItem(material), conditionsFromItem(material))
                         .offerTo(exporter);
 
-                case AxeItem axe -> createAxeRecipe(axe, Ingredient.ofItems(input))
-                        .criterion(hasItem(input), conditionsFromItem(input))
+                case AxeItem axe -> createAxeRecipe(axe, Ingredient.ofItems(material))
+                        .criterion(hasItem(material), conditionsFromItem(material))
                         .offerTo(exporter);
 
-                case SwordItem sword -> createSwordRecipe(sword, Ingredient.ofItems(input))
-                        .criterion(hasItem(input), conditionsFromItem(input))
+                case SwordItem sword -> createSwordRecipe(sword, Ingredient.ofItems(material))
+                        .criterion(hasItem(material), conditionsFromItem(material))
                         .offerTo(exporter);
 
-                case ShovelItem shovel -> createShovelRecipe(shovel, Ingredient.ofItems(input))
-                        .criterion(hasItem(input), conditionsFromItem(input))
+                case ShovelItem shovel -> createShovelRecipe(shovel, Ingredient.ofItems(material))
+                        .criterion(hasItem(material), conditionsFromItem(material))
                         .offerTo(exporter);
 
-                case HoeItem hoe -> createHoeRecipe(hoe, Ingredient.ofItems(input))
-                        .criterion(hasItem(input), conditionsFromItem(input))
+                case HoeItem hoe -> createHoeRecipe(hoe, Ingredient.ofItems(material))
+                        .criterion(hasItem(material), conditionsFromItem(material))
                         .offerTo(exporter);
 
                 default -> TutorialMod.LOGGER.error("Item {} isn't a tool.", tool);
+            }
+        }
+    }
+
+    private void offerArmorRecipes(Consumer<RecipeJsonProvider> exporter, List<ItemConvertible> armorPieces,
+                                   ItemConvertible material) {
+        for (ItemConvertible armorPiece : armorPieces) {
+            if (armorPiece instanceof ArmorItem armorItem) {
+
+                switch (armorItem.getType()) {
+
+                    case ArmorItem.Type.HELMET -> createHelmetRecipe(armorPiece, Ingredient.ofItems(material))
+                            .criterion(hasItem(material), conditionsFromItem(material)).offerTo(exporter);
+
+                    case ArmorItem.Type.CHESTPLATE -> createChestplateRecipe(armorPiece, Ingredient.ofItems(material))
+                            .criterion(hasItem(material), conditionsFromItem(material)).offerTo(exporter);
+
+                    case ArmorItem.Type.LEGGINGS -> createLeggingsRecipe(armorPiece, Ingredient.ofItems(material))
+                            .criterion(hasItem(material), conditionsFromItem(material)).offerTo(exporter);
+
+                    case ArmorItem.Type.BOOTS -> createBootsRecipe(armorPiece, Ingredient.ofItems(material))
+                            .criterion(hasItem(material), conditionsFromItem(material)).offerTo(exporter);
+
+                    default -> TutorialMod.LOGGER.error("Item {} isn't a valid armor item type.", armorItem);
+                }
+            } else {
+                TutorialMod.LOGGER.error("Item {} isn't a valid armor item.", armorPiece);
             }
         }
     }

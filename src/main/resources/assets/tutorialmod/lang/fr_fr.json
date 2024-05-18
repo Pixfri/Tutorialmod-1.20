@@ -19,6 +19,11 @@
   "item.tutorialmod.ruby_shovel": "Pelle en Rubis",
   "item.tutorialmod.ruby_hoe": "Houe en Rubis",
 
+  "item.tutorialmod.ruby_helmet": "Casque en Rubis",
+  "item.tutorialmod.ruby_chestplate": "Plastron en Rubis",
+  "item.tutorialmod.ruby_leggings": "Jambières en Rubis",
+  "item.tutorialmod.ruby_boots": "Bottes en Rubis",
+
   "block.tutorialmod.ruby_block": "Bloc de Rubis",
   "block.tutorialmod.raw_ruby_block": "Bloc de Rubis Brut",
   "block.tutorialmod.ruby_ore": "Minerai de Rubis",
