@@ -18,6 +18,16 @@
   "block.tutorialmod.nether_ruby_ore": "Minerai de Rubis du Nether",
   "block.tutorialmod.end_stone_ruby_ore": "Minerai de Rubis de l'End",
 
+  "block.tutorialmod.ruby_stairs": "Escaliers en Rubis",
+  "block.tutorialmod.ruby_slab": "Dalle en Rubis",
+  "block.tutorialmod.ruby_button": "Bouton en Rubis",
+  "block.tutorialmod.ruby_pressure_plate": "Plaque de pression en Rubis",
+  "block.tutorialmod.ruby_fence": "Barrière en Rubis",
+  "block.tutorialmod.ruby_fence_gate": "Portillon en Rubis",
+  "block.tutorialmod.ruby_wall": "Mur de Rubis",
+  "block.tutorialmod.ruby_door": "Porte en Rubis",
+  "block.tutoriamod.ruby_trapdoor": "Trappe de Rubis",
+
   "block.tutorialmod.sound_block": "Bloc Sonore",
   "block.tutorialmod.sound_block.tooltip": "Fait un joli son quand il reçoit un clique droit",
 

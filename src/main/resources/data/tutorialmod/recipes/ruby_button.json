@@ -1,0 +1,13 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "redstone",
+  "ingredients": [
+    {
+      "item": "tutorialmod:ruby"
+    }
+  ],
+  "result": {
+    "count": 4,
+    "item": "tutorialmod:ruby_button"
+  }
+}

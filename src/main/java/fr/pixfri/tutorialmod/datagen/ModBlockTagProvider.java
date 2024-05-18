@@ -39,6 +39,15 @@ public class ModBlockTagProvider extends FabricTagProvider.BlockTagProvider {
         getOrCreateTagBuilder(BlockTags.PICKAXE_MINEABLE)
                 .add(ModBlocks.RUBY_BLOCK)
                 .add(ModBlocks.RAW_RUBY_BLOCK)
+                .add(ModBlocks.RUBY_BUTTON)
+                .add(ModBlocks.RUBY_DOOR)
+                .add(ModBlocks.RUBY_STAIRS)
+                .add(ModBlocks.RUBY_SLAB)
+                .add(ModBlocks.RUBY_PRESSURE_PLATE)
+                .add(ModBlocks.RUBY_FENCE)
+                .add(ModBlocks.RUBY_FENCE_GATE)
+                .add(ModBlocks.RUBY_WALL)
+                .add(ModBlocks.RUBY_TRAPDOOR)
                 .add(ModBlocks.RUBY_ORE)
                 .add(ModBlocks.DEEPSLATE_RUBY_ORE)
                 .add(ModBlocks.NETHER_RUBY_ORE)
@@ -53,10 +62,28 @@ public class ModBlockTagProvider extends FabricTagProvider.BlockTagProvider {
                 .add(ModBlocks.RUBY_BLOCK)
                 .add(ModBlocks.RAW_RUBY_BLOCK)
                 .add(ModBlocks.RUBY_ORE)
-                .add(ModBlocks.DEEPSLATE_RUBY_ORE);
+                .add(ModBlocks.DEEPSLATE_RUBY_ORE)
+                .add(ModBlocks.RUBY_BUTTON)
+                .add(ModBlocks.RUBY_DOOR)
+                .add(ModBlocks.RUBY_STAIRS)
+                .add(ModBlocks.RUBY_SLAB)
+                .add(ModBlocks.RUBY_PRESSURE_PLATE)
+                .add(ModBlocks.RUBY_FENCE)
+                .add(ModBlocks.RUBY_FENCE_GATE)
+                .add(ModBlocks.RUBY_WALL)
+                .add(ModBlocks.RUBY_TRAPDOOR);
 
         getOrCreateTagBuilder(BlockTags.NEEDS_DIAMOND_TOOL)
                 .add(ModBlocks.END_STONE_RUBY_ORE);
+
+        getOrCreateTagBuilder(BlockTags.FENCES)
+                .add(ModBlocks.RUBY_FENCE);
+
+        getOrCreateTagBuilder(BlockTags.FENCE_GATES)
+                .add(ModBlocks.RUBY_FENCE_GATE);
+
+        getOrCreateTagBuilder(BlockTags.WALLS)
+                .add(ModBlocks.RUBY_WALL);
 
         getOrCreateTagBuilder(TagKey.of(RegistryKeys.BLOCK, new Identifier("fabric", "needs_tool_level_4")))
             ; // Nothing in this tag for now.
