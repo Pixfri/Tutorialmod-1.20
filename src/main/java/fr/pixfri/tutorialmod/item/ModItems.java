@@ -2,6 +2,7 @@ package fr.pixfri.tutorialmod.item;
 
 import fr.pixfri.tutorialmod.TutorialMod;
 import fr.pixfri.tutorialmod.item.custom.MetalDetectorItem;
+import fr.pixfri.tutorialmod.item.custom.ModArmorItem;
 import net.fabricmc.fabric.api.item.v1.FabricItemSettings;
 import net.fabricmc.fabric.api.registry.FuelRegistry;
 import net.minecraft.item.*;
@@ -44,8 +45,10 @@ public class ModItems {
     public static final Item RUBY_HOE = registerItem("ruby_hoe",
             new HoeItem(ModToolMaterial.RUBY, 1, 1.5f, new FabricItemSettings()));
 
+    // Ruby armor set
+    // Only one item needs to use the ModArmorItem in the whole set since it checks for every other armor item.
     public static final Item RUBY_HELMET = registerItem("ruby_helmet",
-            new ArmorItem(ModArmorMaterials.RUBY, ArmorItem.Type.HELMET, new FabricItemSettings()));
+            new ModArmorItem(ModArmorMaterials.RUBY, ArmorItem.Type.HELMET, new FabricItemSettings()));
 
     public static final Item RUBY_CHESTPLATE = registerItem("ruby_chestplate",
             new ArmorItem(ModArmorMaterials.RUBY, ArmorItem.Type.CHESTPLATE, new FabricItemSettings()));
