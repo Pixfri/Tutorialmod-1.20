@@ -4,10 +4,12 @@ import fr.pixfri.tutorialmod.TutorialMod;
 import fr.pixfri.tutorialmod.item.custom.MetalDetectorItem;
 import fr.pixfri.tutorialmod.item.custom.ModArmorItem;
 import net.fabricmc.fabric.api.item.v1.FabricItemSettings;
+import net.fabricmc.fabric.api.itemgroup.v1.ItemGroupEvents;
 import net.fabricmc.fabric.api.registry.FuelRegistry;
 import net.minecraft.item.*;
 import net.minecraft.registry.Registries;
 import net.minecraft.registry.Registry;
+import net.minecraft.registry.RegistryKey;
 import net.minecraft.util.Identifier;
 
 public class ModItems {
@@ -71,5 +73,15 @@ public class ModItems {
 
     public static void registerItems() {
         TutorialMod.LOGGER.info("Registering Mod Items for " + TutorialMod.MOD_ID);
+
+        TutorialMod.LOGGER.info("Modifying vanilla item groups for " + TutorialMod.MOD_ID);
+        modifyItemGroup(ItemGroups.TOOLS, ModItemGroupModifiers::addItemsToToolsItemGroup);
+        modifyItemGroup(ItemGroups.COMBAT, ModItemGroupModifiers::addItemsToCombatItemGroup);
+        modifyItemGroup(ItemGroups.INGREDIENTS, ModItemGroupModifiers::addItemsToIngredientsItemGroup);
+        modifyItemGroup(ItemGroups.FOOD_AND_DRINK, ModItemGroupModifiers::addItemsToFoodsAndDrinksItemGroup);
+    }
+
+    private static void modifyItemGroup(RegistryKey<ItemGroup> group, ItemGroupEvents.ModifyEntries modifyEntries) {
+        ItemGroupEvents.modifyEntriesEvent(group).register(modifyEntries);
     }
 }
