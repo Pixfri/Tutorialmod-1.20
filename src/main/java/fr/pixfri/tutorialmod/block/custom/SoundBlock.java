@@ -24,7 +24,7 @@ public class SoundBlock extends Block {
     }
 
     @Override
-    @SuppressWarnings("deprecation")
+    @SuppressWarnings("deprecation") // Only calling this method is deprecated, overrding it is fine.
     public ActionResult onUse(BlockState state, World world, BlockPos pos,
                               PlayerEntity player, Hand hand, BlockHitResult hit) {
 
