@@ -3,6 +3,7 @@ package fr.pixfri.tutorialmod;
 import fr.pixfri.tutorialmod.block.ModBlocks;
 import fr.pixfri.tutorialmod.item.ModItemGroups;
 import fr.pixfri.tutorialmod.item.ModItems;
+import fr.pixfri.tutorialmod.loottable.ModLootTableModifiers;
 import net.fabricmc.api.ModInitializer;
 
 import org.slf4j.Logger;
@@ -18,5 +19,7 @@ public class TutorialMod implements ModInitializer {
 		ModItems.registerItems();
 
 		ModBlocks.registerModBlocks();
+
+		ModLootTableModifiers.modifyLootTables();
 	}
 }
