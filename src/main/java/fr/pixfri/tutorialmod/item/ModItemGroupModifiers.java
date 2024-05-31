@@ -24,9 +24,15 @@ public class ModItemGroupModifiers {
         entries.add(ModItems.RAW_RUBY);
         entries.add(ModItems.RUBY);
         entries.add(ModItems.COAL_BRIQUETTE);
+
+        entries.add(ModItems.TOMATO);
     }
 
     protected static void addItemsToFoodsAndDrinksItemGroup(FabricItemGroupEntries entries) {
         entries.add(ModItems.TOMATO);
+    }
+
+    protected static void addItemsToNaturalItemGroup(FabricItemGroupEntries entries) {
+        entries.add(ModItems.TOMATO_SEEDS);
     }
 }

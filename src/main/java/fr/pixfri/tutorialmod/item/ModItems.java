@@ -1,6 +1,7 @@
 package fr.pixfri.tutorialmod.item;
 
 import fr.pixfri.tutorialmod.TutorialMod;
+import fr.pixfri.tutorialmod.block.ModBlocks;
 import fr.pixfri.tutorialmod.item.custom.MetalDetectorItem;
 import fr.pixfri.tutorialmod.item.custom.ModArmorItem;
 import net.fabricmc.fabric.api.item.v1.FabricItemSettings;
@@ -24,6 +25,10 @@ public class ModItems {
 
     public static final Item TOMATO = registerItem("tomato", new Item(
             new FabricItemSettings().food(ModFoodComponents.TOMATO)));
+
+    public static final Item TOMATO_SEEDS = registerItem("tomato_seeds",
+            new AliasedBlockItem(ModBlocks.TOMATO_CROP, new FabricItemSettings()));
+
 
     public static final Item COAL_BRIQUETTE = registerFuelItem("coal_briquette", new Item(new FabricItemSettings()),
             200);
@@ -79,6 +84,7 @@ public class ModItems {
         modifyItemGroup(ItemGroups.COMBAT, ModItemGroupModifiers::addItemsToCombatItemGroup);
         modifyItemGroup(ItemGroups.INGREDIENTS, ModItemGroupModifiers::addItemsToIngredientsItemGroup);
         modifyItemGroup(ItemGroups.FOOD_AND_DRINK, ModItemGroupModifiers::addItemsToFoodsAndDrinksItemGroup);
+        modifyItemGroup(ItemGroups.NATURAL, ModItemGroupModifiers::addItemsToNaturalItemGroup);
     }
 
     private static void modifyItemGroup(RegistryKey<ItemGroup> group, ItemGroupEvents.ModifyEntries modifyEntries) {

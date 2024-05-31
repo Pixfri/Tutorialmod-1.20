@@ -19,11 +19,17 @@ import java.util.List;
 public class ModLootTableModifiers {
     public static final Identifier JUNGLE_TEMPLE_ID =
             new Identifier("minecraft", "chests/jungle_temple");
+    public static final Identifier VILLAGE_PLAINS_HOUSE_ID =
+            new Identifier("minecraft", "chests/village/village_plains_house");
+    public static final Identifier SAVANNA_PLAINS_HOUSE_ID =
+            new Identifier("minecraft", "chests/village/savanna_plains_house");
+
     public static final Identifier CREEPER_ID =
             new Identifier("minecraft", "entities/creeper");
 
     public static final Identifier SUSPICIOUS_SAND_ID =
             new Identifier("minecraft", "archaeology/desert_pyramid");
+
 
     public static void modifyLootTables() {
         LootTableEvents.MODIFY.register((resourceManager, lootManager, id, tableBuilder, source) -> {
@@ -43,6 +49,16 @@ public class ModLootTableModifiers {
                         .conditionally(RandomChanceLootCondition.builder(1f))
                         .with(ItemEntry.builder(ModItems.COAL_BRIQUETTE))
                         .apply(SetCountLootFunction.builder(UniformLootNumberProvider.create(1f, 1f)).build());
+
+                tableBuilder.pool(poolBuilder.build());
+            }
+
+            if (id.equals(VILLAGE_PLAINS_HOUSE_ID) || id.equals(SAVANNA_PLAINS_HOUSE_ID)) {
+                LootPool.Builder poolBuilder = LootPool.builder()
+                        .rolls(ConstantLootNumberProvider.create(1f))
+                        .conditionally(RandomChanceLootCondition.builder(0.6f)) // Drops 60% of the time
+                        .with(ItemEntry.builder(ModItems.TOMATO_SEEDS))
+                        .apply(SetCountLootFunction.builder(UniformLootNumberProvider.create(1f, 3f)).build());
 
                 tableBuilder.pool(poolBuilder.build());
             }
